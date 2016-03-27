@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ site.description }}">
+
+  <title>{{ site.title }}</title>
+
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/theme.css">
+</head>
+<body>
+
+  <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <a class="pure-menu-heading" href="">{{ site.title }}</a>
+
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="{{ site.demo_url }}" class="pure-menu-link">Demo</a></li>
+        <li class="pure-menu-item"><a href="#get-started" class="pure-menu-link">Get Started</a></li>
+        <li class="pure-menu-item"><a href="{{ site.repo_url }}" class="pure-menu-link">Source Code</a></li>
+      </ul>
+    </div>
+  </div>
+
+  {{ content }}
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Site settings
+title: JKAN
+description: A lightweight, backend-free open data portal, powered by Jekyll
+baseurl: ""
+demo_url: http://timwis.com/jkan
+repo_url: http://github.com/timwis/jkan
+
+# Build settings
+markdown: kramdown

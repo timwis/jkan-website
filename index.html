@@ -1,0 +1,59 @@
+---
+layout: default
+---
+<div class="splash-container">
+  <div class="splash">
+    <h1 class="splash-head">Welcome to JKAN</h1>
+    <p class="splash-subhead">
+      A lightweight, backend-free open data portal, powered by Jekyll
+    </p>
+    <p>
+      <a href="{{ site.demo_url }}" class="pure-button pure-button-primary">Demo</a>
+      <a href="#get-started" class="pure-button pure-button-primary">Get Started</a>
+    </p>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <div class="l-box-lrg">
+
+      <p>Open-source data portals can be <a href="https://twitter.com/waldojaquith/status/282599673569619969">really</a>.
+        <a href="https://twitter.com/chris_whong/status/669207423719235584">hard</a>. to install and maintain. But their
+        basic purpose of providing links to download data really isn't that complicated. JKAN is a proof-of-concept that
+        allows a small, resource-strapped government agency to stand-up an open data portal by simply clicking the fork
+        button.</p>
+
+      <p>Please note this is still a work in progress! Check out the <a href="{{ site.repo_url}}/issues">issues</a> to
+        help out or give feedback.</p>
+
+  </div>
+
+
+  <div class="ribbon l-box-lrg pure-g" id="get-started">
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+      <h2 class="content-head content-head-ribbon">Get Started</h2>
+
+      <p>Getting started can be as simple as clicking "Fork" on the JKAN code repository.
+        You'll need a <a href="https://github.com/login?return_to=%2Ftimwis%2Fjkan">GitHub account</a> first.</p>
+
+      <a href="{{ site.repo_url }}"><img src="{{ site.baseurl }}img/fork.png" alt="Fork button on github.com" height="50"></a>
+
+      <p>You can then access it at <code>&lt;your_github_username&gt;.github.io/jkan</code></p>
+
+      <p>From there, you can use the <a href="https://help.github.com/articles/editing-files-in-your-repository/">built-in edit button</a>
+        on github to edit <a href="{{ site.repo_url }}/blob/gh-pages/_config.yml"><code>_config.yml</code></a> and the datasets in the
+        <a href="{{ site.repo_url}}/tree/gh-pages/_datasets"><code>_datasets</code></a> directory to manage your site.</p>
+
+      <p>Alternatively, you can use JKAN's user-friendly editing pages.</p>
+
+      <a href="{{ site.baseurl }}img/gui.png"><img src="{{ site.baseurl }}img/gui.png" alt="Screenshot of user-friendly editing page" class="thumbnail"></a>
+
+      <p>But doing so requires one more installation step: setting up authentication. Fortunately there's a user-friendly page for
+        doing that too. Just go to your setup page (ie. <code>&lt;your_github_username&gt;.github.io/jkan/setup</code>)</p>
+
+      <a href="{{ site.baseurl }}img/setup.png"><img src="{{ site.baseurl }}img/setup.png" alt="Screenshot of setup page" class="thumbnail"></a>
+    </div>
+  </div>
+
+</div>
