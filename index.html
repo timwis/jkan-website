@@ -34,28 +34,21 @@ layout: default
 
       <h2 class="content-head content-head-ribbon">Get Started</h2>
 
-      <p>Getting started involves two steps: First, click "Fork" on the <a href="{{ site.repo url }}">JKAN code repository</a>.
-        You'll need a <a href="https://github.com/login?return_to=%2Ftimwis%2Fjkan">GitHub account</a> first.</p>
+      <button type="button" class="pure-button" data-hook="login">Login</button>
+      <button type="button" class="pure-button pure-button-disabled" data-hook="fork">Fork</button>
 
-      <a href="{{ site.repo_url }}"><img src="{{ site.baseurl }}img/fork.png" alt="Fork button on github.com" height="50"></a>
+      <form class="pure-form">
+        <fieldset>
+          <label for="github-client-id">Github Client ID</label>
+          <input type="text" name="github-client-id" id="github-client-id" data-hook="github-client-id" placeholder="ie. 777ae16009a6f9e6d451">
 
-      <p>Second, open <code>_config.yml</code> using the
-        <a href="https://help.github.com/articles/editing-files-in-your-repository/">built-in edit button</a> on github and
-        set your site's title and/or description, then click "Commit changes" at the bottom.</p>
+          <label for="app-name">App Name</label>
+          <input type="text" name="app-name" id="app-name" data-hook="app-name" placeholder="ie. jkan-gatekeeper">
+        </fieldset>
+      </form>
 
-      <p>You can then access your site at <code>&lt;your_github_username&gt;.github.io/jkan</code></p>
+      <button type="button" class="pure-button pure-button-disabled" data-hook="save">Save</button>
 
-      <p>From there, you can continue using the built-in editing functionality on github to add/edit datasets in the
-        <a href="{{ site.repo_url}}/tree/gh-pages/_datasets"><code>_datasets</code></a> directory to manage your site.</p>
-
-      <p>Alternatively, you can use JKAN's user-friendly editing pages.</p>
-
-      <a href="{{ site.baseurl }}img/gui.png"><img src="{{ site.baseurl }}img/gui.png" alt="Screenshot of user-friendly editing page" class="thumbnail"></a>
-
-      <p>But doing so requires one more installation step: setting up authentication. Fortunately there's a user-friendly page for
-        doing that too. Just go to your setup page (ie. <code>&lt;your_github_username&gt;.github.io/jkan/setup</code>)</p>
-
-      <a href="{{ site.baseurl }}img/setup.png"><img src="{{ site.baseurl }}img/setup.png" alt="Screenshot of setup page" class="thumbnail"></a>
     </div>
   </div>
 
