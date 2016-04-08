@@ -226,6 +226,17 @@ a.pure-button-primary {
     padding: 3px;
 }
 
+.ribbon h1,
+.ribbon h2,
+.ribbon h3,
+.ribbon h4 {
+  color: white;
+}
+
+.ribbon label {
+  color: #aaa;
+}
+
 /* This is the class used for the footer */
 .footer {
     background: #111;
@@ -295,4 +306,8 @@ a.pure-button-primary {
 .thumbnail {
     max-width: 300px;
     max-height: 300px;
+}
+
+.step {
+  margin-bottom: 5px;
 }
