@@ -71,7 +71,7 @@ elements.forkBtn.on('click', function (e) {
     if (err) return console.error(err)
     forkRepo = github.getRepo(data.owner.login, data.name)
     elements.forkStatus.html('Forked to <a href="' + data.html_url + '" target="_blank">' + data.full_name + '</a>')
-    var siteUrl = 'http://' + data.owner.login + '.github.io/' + data.name
+    var siteUrl = 'http://' + data.owner.login + '.github.io/' + data.name + '/'
     elements.siteUrl.text(siteUrl).attr('href', siteUrl)
     disable(elements.forkBtn)
     enable(elements.saveBtn)
@@ -147,7 +147,7 @@ function show (el) { return el.removeClass(hiddenClass) }
 function hide (el) { return el.addClass(hiddenClass) }
 
 function clearParams () {
-  window.location.href = window.location.href.split('?')[0]
+  window.location.href = window.location.href.split('?')[0] + '#get-started'
 }
 
 function updateYamlString (yamlString, updateObject) {
