@@ -71,7 +71,7 @@ elements.forkBtn.on('click', function (e) {
     if (err) return console.error(err)
     forkRepo = github.getRepo(data.owner.login, data.name)
     elements.forkStatus.html('Forked to <a href="' + data.html_url + '" target="_blank">' + data.full_name + '</a>')
-    var siteUrl = 'http://' + data.owner.login + '.github.io/' + data.name + '/'
+    var siteUrl = 'https://' + data.owner.login + '.github.io/' + data.name + '/'
     elements.siteUrl.text(siteUrl).attr('href', siteUrl)
     disable(elements.forkBtn)
     enable(elements.saveBtn)
