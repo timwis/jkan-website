@@ -1,8 +1,8 @@
 /* global $, Cookies, Github */
 
 var githubLoginUrl = 'https://github.com/login/oauth/authorize'
-var disabledClass = 'pure-button-disabled'
-var hiddenClass = 'hidden'
+var hiddenClass = 'is-hidden'
+var loadingClass = 'is-loading'
 
 var settings = {
   repoOwner: 'timwis',
@@ -15,13 +15,10 @@ var settings = {
 
 var elements = {
   loginBtn: queryByHook('login'),
-  loginLoading: queryByHook('login-loading'),
   loginStatus: queryByHook('login-status'),
   forkBtn: queryByHook('fork'),
-  forkLoading: queryByHook('fork-loading'),
   forkStatus: queryByHook('fork-status'),
   saveBtn: queryByHook('save'),
-  saveLoading: queryByHook('save-loading'),
   saveStatus: queryByHook('save-status'),
   githubClientId: queryByHook('github-client-id'),
   appName: queryByHook('app-name'),
@@ -33,15 +30,15 @@ var github, forkRepo
 
 // Click login button to initiate step 1
 elements.loginBtn.on('click', function (e) {
-  if (!elements.loginBtn.hasClass(disabledClass)) initiateLogin()
+  if (isEnabled(elements.loginBtn)) initiateLogin()
 })
 
 // If login step 1 completed
 var authCodeMatch = window.location.href.match(/\?code=([a-z0-9]*)/)
 if (authCodeMatch) {
-  show(elements.loginLoading)
+  setLoading(elements.loginBtn)
   finishLogin(authCodeMatch[1]).then(function (authToken) {
-    hide(elements.loginLoading)
+    setNotLoading(elements.loginBtn)
     Cookies.set('oauth-token', authToken)
     clearParams()
   })
@@ -63,7 +60,7 @@ if (authToken) {
 
 // Click fork button
 elements.forkBtn.on('click', function (e) {
-  if (elements.forkBtn.hasClass(disabledClass) || !github) return
+  if (!isEnabled(elements.forkBtn) || !github) return
   show(elements.forkLoading)
   var sourceRepo = github.getRepo(settings.repoOwner, settings.repoName)
   sourceRepo.fork(function (err, data) {
@@ -80,7 +77,7 @@ elements.forkBtn.on('click', function (e) {
 
 // Click save button
 elements.saveBtn.on('click', function (e) {
-  if (elements.saveBtn.hasClass(disabledClass) || !github || !forkRepo) return
+  if (!isEnabled(elements.saveBtn) || !github || !forkRepo) return
   if (!elements.githubClientId.val() || !elements.appName.val()) {
     elements.saveStatus.text('Error: Github Client ID and App Name must be provided')
     return console.error('No values set')
@@ -121,7 +118,7 @@ function finishLogin (authCode) {
       if (data && data.token) {
         resolve(data.token)
       } else {
-        reject('Authentication failed')
+        reject(new Error('Authentication failed'))
       }
     })
   })
@@ -141,10 +138,13 @@ function queryByHook (hook) {
   return $('[data-hook~=' + hook + ']')
 }
 
-function enable (el) { return el.removeClass(disabledClass) }
-function disable (el) { return el.addClass(disabledClass) }
+function enable (el) { return el.attr('disabled', false) }
+function disable (el) { return el.attr('disabled', true) }
+function isEnabled (el) { return !el.attr('disabled') }
 function show (el) { return el.removeClass(hiddenClass) }
 function hide (el) { return el.addClass(hiddenClass) }
+function setLoading (el) { return el.addClass(loadingClass) }
+function setNotLoading (el) { return el.removeClass(loadingClass) }
 
 function clearParams () {
   window.location.href = window.location.href.split('?')[0] + '#get-started'

@@ -7,3 +7,11 @@ repo_url: https://github.com/timwis/jkan
 
 # Build settings
 markdown: kramdown
+
+collections:
+  - features
+  - implementations
+  - installation
+
+sass:
+    sass_dir: _sass

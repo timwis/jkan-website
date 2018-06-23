@@ -1,0 +1,22 @@
+<div class="columns features">
+  {% assign features = site.features | sort: "order" %}
+  {% assign feature_count = features | size %}
+  {% assign column_size = 12 | divided_by: feature_count %}
+  {% for feature in features %}
+    <div class="column is-{{ column_size }}">
+      <div class="card is-shady">
+        <div class="card-content">
+          <div class="content">
+            <h4>
+              {% if feature.icon %}
+                <i class="fa fa-{{ feature.icon }}"></i>
+              {% endif %}
+              {{ feature.title }}
+            </h4>
+            <p>{{ feature.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
