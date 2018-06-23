@@ -60,7 +60,6 @@ if (authToken) {
 
 // Click fork button
 elements.forkBtn.on('click', function (e) {
-  console.log('clicked', isEnabled(elements.forkBtn), github)
   if (!isEnabled(elements.forkBtn) || !github) return
   setLoading(elements.forkBtn)
   var sourceRepo = github.getRepo(settings.repoOwner, settings.repoName)
