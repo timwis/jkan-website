@@ -60,11 +60,12 @@ if (authToken) {
 
 // Click fork button
 elements.forkBtn.on('click', function (e) {
+  console.log('clicked', isEnabled(elements.forkBtn), github)
   if (!isEnabled(elements.forkBtn) || !github) return
-  show(elements.forkLoading)
+  setLoading(elements.forkBtn)
   var sourceRepo = github.getRepo(settings.repoOwner, settings.repoName)
   sourceRepo.fork(function (err, data) {
-    hide(elements.forkLoading)
+    setNotLoading(elements.forkBtn)
     if (err) return console.error(err)
     forkRepo = github.getRepo(data.owner.login, data.name)
     elements.forkStatus.html('Forked to <a href="' + data.html_url + '" target="_blank">' + data.full_name + '</a>')
@@ -86,13 +87,13 @@ elements.saveBtn.on('click', function (e) {
     github_client_id: elements.githubClientId.val(),
     gatekeeper_host: 'https://' + elements.appName.val() + '.herokuapp.com'
   }
-  show(elements.saveLoading)
+  setLoading(elements.saveBtn)
   forkRepo.read(settings.repoBranch, settings.configFilePath, function (err, fileContents) {
     if (err) console.error(err)
     var newFileContents = updateYamlString(fileContents, formData)
     var commitMsg = 'Updated ' + settings.configFilePath
     forkRepo.write(settings.repoBranch, settings.configFilePath, newFileContents, commitMsg, {}, function (err, data) {
-      hide(elements.saveLoading)
+      setNotLoading(elements.saveBtn)
       if (err) return console.error(err)
       elements.saveStatus.html('Saved to <a href="' + data.commit.html_url + '">' + settings.configFilePath + '</a>')
       disable(elements.saveBtn)
