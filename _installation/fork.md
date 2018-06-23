@@ -10,5 +10,12 @@ GitHub is a website for hosting source code, and they provide free web hosting f
   </span>
   <span>Sign-in with GitHub</span>
 </button>
-
 <span class="step-status" data-hook="login-status"></span>
+
+<button type="button" class="button is-info" disabled data-hook="fork">
+  <span class="icon is-small">
+    <i class="fa fa-code-fork"></i>
+  </span>
+  <span>Fork JKAN</span>
+</button>
+<span class="step-status" data-hook="fork-status"></span>
