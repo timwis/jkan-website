@@ -3,6 +3,7 @@
 var githubLoginUrl = 'https://github.com/login/oauth/authorize'
 var hiddenClass = 'is-hidden'
 var loadingClass = 'is-loading'
+var activeClass = 'is-active'
 
 var settings = {
   repoOwner: 'timwis',
@@ -14,6 +15,8 @@ var settings = {
 }
 
 var elements = {
+  navbarBurger: queryByHook('navbar-burger'),
+  navbarMenu: queryByHook('navbar-menu'),
   loginBtn: queryByHook('login'),
   loginStatus: queryByHook('login-status'),
   forkBtn: queryByHook('fork'),
@@ -27,6 +30,11 @@ var elements = {
 }
 
 var github, forkRepo
+
+// Navbar burger/menu toggle on mobile
+elements.navbarBurger.on('click', function (e) {
+  elements.navbarMenu.toggleClass(activeClass)
+})
 
 // Click login button to initiate step 1
 elements.loginBtn.on('click', function (e) {
