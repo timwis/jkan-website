@@ -1,0 +1,12 @@
+<div class="tile is-ancestor implementations">
+  {% assign implementations = site.implementations | sort: "order" %}
+  {% for item in implementations %}
+  <div class="tile is-parent is-shady">
+    <article class="tile is-child notification is-white is-vertical-center">
+      <a href="{{ item.link }}">
+        <img src="img/implementations/{{ item.logo }}" title="{{ item.title }}">
+      </a>
+    </article>
+  </div>
+  {% endfor %}
+</div>
