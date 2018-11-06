@@ -1,6 +1,6 @@
 ---
 title: Estonia
-link: https://keeganmcbride.github.io/jkan/
+link: https://opendata.riik.ee
 logo: estonia.png
 order: 4
 ---
